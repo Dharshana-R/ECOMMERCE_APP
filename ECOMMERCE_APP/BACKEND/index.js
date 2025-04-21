@@ -1,11 +1,39 @@
-const express = require('express');
+require("dotenv").config();
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const cors = require("cors");
+
 const app = express();
+app.use(bodyParser.json());
+app.use(express.json());
+
+var corsOptions = {
+  origin: "http://localhost:4100",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  //credentials: true,
+};
+app.use(cors(corsOptions));
+
+// Routes
+const inventoryRoutes = require("./routing/inventoryRoutes");
+app.use("/api", inventoryRoutes);
+
+const productRoutes = require("./routing/productRoutes");
+app.use("/api", productRoutes);
+
+//Mongo DB connection
+
+const uri = process.env.MONGO_URI;
+
+mongoose.connect(uri)
+.then(() => console.log("✅ Connected to MongoDB Atlas!"))
+.catch(err => console.error("❌ Error connecting to MongoDB:", err));
 
 app.get('/', (req, res) => {
-    res.send('Hello, World!');
+  res.send('Server and DB are working!');
 });
 
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(4100, () => {
+  console.log("Server is running on http://localhost:4100");
 });
