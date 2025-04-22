@@ -1,0 +1,44 @@
+<mat-card class="cart-container">
+  <mat-card-title class="cart-title">Shopping Cart</mat-card-title>
+  <mat-card-content>
+    <div *ngFor="let item of cartItems" class="cart-item">
+      <mat-grid-list cols="12" class="cart-grid">
+        <!-- Column 1: Name, Size, Price, Quantity -->
+        <mat-grid-tile colspan="6" class="item-details">
+          <mat-card-title>{{ item.name }}</mat-card-title>
+          <mat-card-subtitle>
+            Size: {{ item.selectedSize }} |
+            Price: ₹{{ item.price }} |
+            Quantity: {{ item.quantity }}
+          </mat-card-subtitle>
+        </mat-grid-tile>
+
+        <!-- Column 2: Quantity Controls -->
+        <mat-grid-tile colspan="4" class="quantity-controls">
+          <button mat-icon-button color="primary" (click)="updateQuantity(item._id, item.quantity - 1)" [disabled]="item.quantity <= 1">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <span>{{ item.quantity }}</span>
+          <button mat-icon-button color="primary" (click)="updateQuantity(item._id, item.quantity + 1)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-grid-tile>
+
+        <!-- Column 3: Delete Button -->
+        <mat-grid-tile colspan="2" class="delete-button">
+          <button mat-icon-button color="warn" (click)="removeItem(item._id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+
+    <ng-template #emptyCart>
+      <p class="empty-cart-message">Your cart is empty.</p>
+    </ng-template>
+<hr>
+    <div *ngIf="cartItems.length > 0" class="total">
+      <h3>Total: ₹{{ calculateTotal() }}</h3>
+    </div>
+  </mat-card-content>
+</mat-card>
