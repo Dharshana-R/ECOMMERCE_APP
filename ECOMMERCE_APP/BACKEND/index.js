@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 var corsOptions = {
-  origin: "http://localhost:4100",
+  origin: "http://localhost:4200",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   //credentials: true,
 };
@@ -21,6 +21,9 @@ app.use("/api", inventoryRoutes);
 
 const productRoutes = require("./routing/productRoutes");
 app.use("/api", productRoutes);
+
+const cartRoutes = require("./routing/cartRoute");
+app.use('/api', cartRoutes);
 
 //Mongo DB connection
 
