@@ -1,0 +1,97 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .success-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .header {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .mat-divider {
+    margin: 1.5rem 0;
+    background-color: #e0e0e0;
+    height: 1px;
+  }
+  
+  .order-summary {
+    margin-bottom: 2.5rem;
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+  
+      th, td {
+        padding: 1rem;
+        text-align: left;
+      }
+  
+      th {
+        background-color: #f1f1f1;
+        font-weight: 600;
+        color: #34495e;
+      }
+  
+      td {
+        background-color: #fafafa;
+        color: #2d3e50;
+        font-size: 1rem;
+      }
+  
+      .key {
+        font-weight: 600;
+        color: #7f8c8d;
+        padding-right: 20px; /* Add space between key and value */
+        white-space: nowrap;
+      }
+  
+      .value {
+        color: #2980b9;
+        padding-left: 20px; /* Add space between key and value */
+      }
+    }
+  }
+  
+  .total-amount {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3e50;
+    margin-top: 1.5rem;
+    border-top: 2px solid #ecf0f1;
+    padding-top: 1rem;
+  }
+  
+  .go-home-btn {
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #2980b9;
+    color: #fff;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #3498db;
+    }
+  }
+  

@@ -1,6 +1,6 @@
 /* Container for the entire checkout page */
 .checkout-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f9f9f9;
@@ -16,14 +16,18 @@
     color: #3f51b5;
   }
   
-  /* Form styling */
-  .checkout-form {
+  /* Two-column layout */
+  .checkout-content {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     gap: 20px;
   }
   
-  /* Material card for the form */
+  /* Form styling */
+  .checkout-form {
+    flex: 1;
+  }
+  
   .form-card {
     padding: 20px;
     background-color: #ffffff;
@@ -31,40 +35,43 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
-  /* Form field styling */
   .form-field {
     width: 100%;
   }
   
-  /* Place Order button styling */
-  .place-order-button {
-    margin-top: 20px;
-    width: 100%;
-    font-size: 1rem;
-    padding: 10px;
+  /* Order summary styling */
+  .order-summary {
+    flex: 0.5;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
   
-  /* Material card for the order summary */
   .summary-card {
-    margin-top: 30px;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
-  /* Cart item styling */
   .cart-item {
     margin-bottom: 10px;
     font-size: 1rem;
     color: #333;
   }
   
-  /* Total price styling */
   .total-price {
     margin-top: 20px;
     font-size: 1.5rem;
     font-weight: bold;
     color: #3f51b5;
     text-align: right;
+  }
+  
+  /* Place Order button styling */
+  .place-order-button {
+    align-self: flex-end;
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
   }

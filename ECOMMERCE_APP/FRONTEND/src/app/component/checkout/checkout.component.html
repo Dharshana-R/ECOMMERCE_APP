@@ -1,50 +1,80 @@
 <div class="checkout-container">
     <h1 class="checkout-title">Checkout</h1>
   
-    <!-- User Details Form -->
-    <form (ngSubmit)="onSubmit()" #checkoutForm="ngForm" class="checkout-form">
-      <mat-card class="form-card">
-        <mat-card-title>User Details</mat-card-title>
-        <mat-card-content>
-          <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Name</mat-label>
-            <input matInput type="text" name="name" [(ngModel)]="userDetails.name" required />
-          </mat-form-field>
+    <div class="checkout-content">
+      <!-- User Details Form -->
+      <form (ngSubmit)="onSubmit()" #checkoutForm="ngForm" class="checkout-form">
+        <mat-card class="form-card">
+          <mat-card-title>User Details</mat-card-title>
+          <mat-card-content>
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>Name</mat-label>
+              <input matInput type="text" name="name" [(ngModel)]="userDetails.name" required />
+            </mat-form-field>
   
-          <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Email</mat-label>
-            <input matInput type="email" name="email" [(ngModel)]="userDetails.email" required />
-          </mat-form-field>
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" name="email" [(ngModel)]="userDetails.email" required />
+            </mat-form-field>
   
-          <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Address</mat-label>
-            <textarea matInput name="address" [(ngModel)]="userDetails.address" required></textarea>
-          </mat-form-field>
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>Address</mat-label>
+              <textarea matInput name="address" [(ngModel)]="userDetails.address" required></textarea>
+            </mat-form-field>
   
-          <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Payment Method</mat-label>
-            <mat-select name="paymentMethod" [(ngModel)]="userDetails.paymentMethod" required>
-              <mat-option value="credit-card">Credit Card</mat-option>
-              <mat-option value="paypal">PayPal</mat-option>
-              <mat-option value="cash-on-delivery">Cash on Delivery</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </mat-card-content>
-      </mat-card>
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>Payment Method</mat-label>
+              <mat-select name="paymentMethod" [(ngModel)]="userDetails.paymentMethod" required>
+                <mat-option value="credit-card">Credit Card</mat-option>
+                <mat-option value="paypal">PayPal</mat-option>
+                <mat-option value="cash-on-delivery">Cash on Delivery</mat-option>
+              </mat-select>
+            </mat-form-field>
   
-      <button mat-raised-button color="primary" type="submit" [disabled]="!checkoutForm.valid" class="place-order-button">
-        Place Order
-      </button>
-    </form>
+            <!-- Credit Card Details -->
+            <div *ngIf="userDetails.paymentMethod === 'credit-card'" class="payment-details">
+              <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Card Number</mat-label>
+                <input matInput type="text" name="cardNumber" [(ngModel)]="userDetails.cardNumber" required />
+              </mat-form-field>
   
-    <!-- Cart Summary -->
-    <mat-card class="summary-card" *ngIf="cartItems.length > 0">
-      <mat-card-title>Order Summary</mat-card-title>
-      <mat-card-content>
-        <div *ngFor="let item of cartItems" class="cart-item">
-          <p>{{ item.name }} ({{ item.selectedSize }}) - ₹{{ item.price }} x {{ item.quantity }}</p>
-        </div>
-        <h3 class="total-price">Total: ₹{{ calculateTotal() }}</h3>
-      </mat-card-content>
-    </mat-card>
+              <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Expiry Date</mat-label>
+                <input matInput type="text" name="expiryDate" [(ngModel)]="userDetails.expiryDate" placeholder="MM/YY" required />
+              </mat-form-field>
+  
+              <mat-form-field appearance="fill" class="form-field">
+                <mat-label>CVV</mat-label>
+                <input matInput type="password" name="cvv" [(ngModel)]="userDetails.cvv" required />
+              </mat-form-field>
+            </div>
+  
+            <!-- PayPal Details -->
+            <div *ngIf="userDetails.paymentMethod === 'paypal'" class="payment-details">
+              <mat-form-field appearance="fill" class="form-field">
+                <mat-label>PayPal Email</mat-label>
+                <input matInput type="email" name="paypalEmail" [(ngModel)]="userDetails.paypalEmail" required />
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </form>
+  
+      <!-- Order Summary and Place Order Button -->
+      <div class="order-summary">
+        <mat-card class="summary-card">
+          <mat-card-title>Order Summary</mat-card-title>
+          <mat-card-content>
+            <div *ngFor="let item of cartItems" class="cart-item">
+              <p>{{ item.name }} ({{ item.selectedSize }}) - ₹{{ item.price }} x {{ item.quantity }}</p>
+            </div>
+            <h3 class="total-price">Total: ₹{{ calculateTotal() }}</h3>
+          </mat-card-content>
+        </mat-card>
+  
+        <button mat-raised-button color="primary" type="submit" [disabled]="!checkoutForm.valid" class="place-order-button" (click)="onSubmit()">
+          Place Order
+        </button>
+      </div>
+    </div>
   </div>

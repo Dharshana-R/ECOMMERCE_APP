@@ -25,6 +25,9 @@ app.use("/api", productRoutes);
 const cartRoutes = require("./routing/cartRoute");
 app.use('/api', cartRoutes);
 
+const checkoutRoutes = require("./routing/checkoutRoute");
+app.use('/api', checkoutRoutes);
+
 //Mongo DB connection
 
 const uri = process.env.MONGO_URI;

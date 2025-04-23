@@ -1,0 +1,53 @@
+<div class="success-container">
+    <div class="header">
+      <span>Order Success!</span>
+    </div>
+    
+    <mat-divider></mat-divider>
+  
+    <div class="order-summary">
+      <table>
+        <tr>
+          <th class="key">Name:</th>
+          <td class="value">{{ orderDetails.name }}</td>
+        </tr>
+        <tr>
+          <th class="key">Email:</th>
+          <td class="value">{{ orderDetails.email }}</td>
+        </tr>
+        <tr>
+          <th class="key">Address:</th>
+          <td class="value">{{ orderDetails.address }}</td>
+        </tr>
+        <tr>
+          <th class="key">Payment Method:</th>
+          <td class="value">{{ orderDetails.paymentMethod }}</td>
+        </tr>
+        <tr *ngIf="orderDetails.paymentMethod === 'credit-card'">
+          <th class="key">Card Number:</th>
+          <td class="value">{{ orderDetails.cardNumber }}</td>
+        </tr>
+        <tr *ngIf="orderDetails.paymentMethod === 'credit-card'">
+          <th class="key">Expiry Date:</th>
+          <td class="value">{{ orderDetails.expiryDate }}</td>
+        </tr>
+        <tr *ngIf="orderDetails.paymentMethod === 'credit-card'">
+          <th class="key">CVV:</th>
+          <td class="value">{{ orderDetails.cvv }}</td>
+        </tr>
+        <tr *ngIf="orderDetails.paymentMethod === 'paypal'">
+          <th class="key">PayPal Email:</th>
+          <td class="value">{{ orderDetails.paypalEmail }}</td>
+        </tr>
+        <tr>
+          <th class="key">Total Amount:</th>
+          <td class="value">${{ orderDetails.totalAmount }}</td>
+        </tr>
+      </table>
+    </div>
+  
+    <!-- <div class="go-home-btn" (click)="goHome()">
+      Go Home
+    </div> -->
+  </div>
+  

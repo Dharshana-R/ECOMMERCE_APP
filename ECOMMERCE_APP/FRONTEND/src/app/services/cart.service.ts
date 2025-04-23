@@ -50,7 +50,7 @@ export class CartService {
   }
 
   clearCart(): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/clearCart");
-`);
+    return this.http.delete(`${this.apiUrl}/clearCart`);
   }
+  
 }

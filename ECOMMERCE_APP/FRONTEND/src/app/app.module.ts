@@ -21,10 +21,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { CheckoutComponent } from './component/checkout/checkout.component';
 
 import { MatInputModule } from '@angular/material/input';
-
-
-
-
+import { SuccesspageComponent } from './component/success-page/success-page.component';
 //import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
@@ -32,7 +29,8 @@ import { MatInputModule } from '@angular/material/input';
     ProductListComponent,
     HomeComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    SuccesspageComponent,
   ],
   imports: [
     MatIconModule,
@@ -54,7 +52,8 @@ import { MatInputModule } from '@angular/material/input';
       { path: 'home', component: HomeComponent },
       { path: 'products', component: ProductListComponent },
       { path: 'cart', component: CartComponent },
-      { path: 'checkout', component: CheckoutComponent }
+      { path: 'checkout', component: CheckoutComponent },
+      { path: 'success', component: SuccesspageComponent },
     ])
   ],
   providers: [],
