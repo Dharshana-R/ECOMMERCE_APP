@@ -38,7 +38,7 @@ export class ProductListComponent implements OnInit {
     this.cartService.getCartItems().subscribe((cartItems: Product[]) => {
       // Check if the product with the same size already exists in the cart
       const existingItem = cartItems.find(
-        (item) => item._id === product._id && item.selectedSize === product.selectedSize
+        (item) => item.selectedSize === product.selectedSize
       );
   
       if (existingItem) {
