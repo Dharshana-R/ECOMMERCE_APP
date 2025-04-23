@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
+import { Router } from '@angular/router';
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit {
   cartItems: any[] = [];  // To store the list of cart items
   totalAmount: number = 0; // Declare the totalAmount property
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
     this.getCartItems();
@@ -59,11 +60,10 @@ export class CartComponent implements OnInit {
     });
   }
 
-  // updateQuantity(id: string, quantity: number) {
-  //   this.cartService.updateQuantity(id, quantity).subscribe(() => {
-  //     this.getCartItems();  // Refresh the cart
-  //   });
-  // }
+  checkout(): void {
+    // Navigate to the checkout page
+    this.router.navigate(['/checkout']);
+  }
   
 
  

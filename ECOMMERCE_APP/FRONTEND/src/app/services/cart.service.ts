@@ -48,4 +48,9 @@ export class CartService {
   checkProductInCart(productId: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/cart/check/${productId}`); // Matches: GET /api/cart/check/:productId
   }
+
+  clearCart(): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/clearCart");
+`);
+  }
 }

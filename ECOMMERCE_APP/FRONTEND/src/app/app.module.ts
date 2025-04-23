@@ -18,6 +18,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { CartComponent } from './component/cart/cart.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { CheckoutComponent } from './component/checkout/checkout.component';
+
+import { MatInputModule } from '@angular/material/input';
+
+
 
 
 //import { MatButtonModule } from '@angular/material/button';
@@ -26,10 +31,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
     AppComponent,
     ProductListComponent,
     HomeComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     MatIconModule,
+    MatInputModule,
     FormsModule,
     MatCardModule,
     MatFormFieldModule,
@@ -46,7 +53,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
       { path: '', component: HomeComponent }, 
       { path: 'home', component: HomeComponent },
       { path: 'products', component: ProductListComponent },
-      { path: 'cart', component: CartComponent }
+      { path: 'cart', component: CartComponent },
+      { path: 'checkout', component: CheckoutComponent }
     ])
   ],
   providers: [],

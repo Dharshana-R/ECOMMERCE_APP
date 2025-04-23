@@ -15,7 +15,8 @@
 
         <!-- Column 2: Quantity Controls -->
         <mat-grid-tile colspan="4" class="quantity-controls">
-          <button mat-icon-button color="primary" (click)="updateQuantity(item._id, item.quantity - 1)" [disabled]="item.quantity <= 1">
+          <button mat-icon-button color="primary" (click)="updateQuantity(item._id, item.quantity - 1)"
+            [disabled]="item.quantity <= 1">
             <mat-icon>remove</mat-icon>
           </button>
           <span>{{ item.quantity }}</span>
@@ -36,9 +37,16 @@
     <ng-template #emptyCart>
       <p class="empty-cart-message">Your cart is empty.</p>
     </ng-template>
-<hr>
+    <hr>
     <div *ngIf="cartItems.length > 0" class="total">
       <h3>Total: ₹{{ calculateTotal() }}</h3>
+    </div>
+  </mat-card-content>
+<mat-card-content>
+    <div *ngIf="cartItems.length > 0" class="checkout-section">
+      <button mat-raised-button color="primary" class="checkout-button" (click)="checkout()">
+        Checkout
+      </button>
     </div>
   </mat-card-content>
 </mat-card>
