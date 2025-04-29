@@ -8,7 +8,7 @@ import { Product } from '../models/product.model';  // Adjust the path as necess
 })
 export class ProductService {
   private apiUrl = 'http://localhost:4100/api/products';  // Replace with your actual API URL
-  constructor(private http: HttpClient) {}  // Removed ProductListComponent
+  constructor(private http: HttpClient) { }  // Removed ProductListComponent
 
   getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
@@ -23,4 +23,10 @@ export class ProductService {
   getProductById(id: string): Observable<Product> {
     return this.http.get<Product>(`${this.apiUrl}/${id}`);
   }
+
+  searchProducts(query: string): Observable<Product[]> {
+    const url = 'http://localhost:4100/api/search/products';
+    return this.http.get<Product[]>(`${url}?name=${query}`);
+  }
+
 }
