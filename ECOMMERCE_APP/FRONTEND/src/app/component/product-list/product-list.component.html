@@ -1,3 +1,34 @@
+<div class="top-controls">
+  
+  <div class="left-section">
+    <mat-form-field appearance="outline" class="search-input">
+      <mat-label>Search Products</mat-label>
+      <input matInput [(ngModel)]="searchQuery" placeholder="Enter product name" (keydown.enter)="searchProducts()">
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" (click)="searchProducts()">Search</button>
+    <button mat-stroked-button color="warn" (click)="clearSearch()">Clear</button>
+  </div>
+
+  <div class="right-section">
+    <mat-form-field appearance="fill" (click)="clearSearch()" class="sort-dropdown">
+      <mat-label>Sort By</mat-label>
+      <mat-select [(value)]="sortOption" (selectionChange)="sortProducts()">
+        <mat-option value="New">New</mat-option>
+        <mat-option value="priceAsc">Price: Low to High</mat-option>
+        <mat-option value="priceDesc">Price: High to Low</mat-option>
+        <mat-option value="nameAsc">Name: A-Z</mat-option>
+        <mat-option value="nameDesc">Name: Z-A</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</div>
+
+<div *ngIf="hasSearched && searchQuery" class="search-query-text">
+  <p>Showing results for '<b>{{ searchQuery }}</b>'</p>
+</div>
+
 <div *ngIf="products?.length === 0" class="no-products">
   <mat-card>
     <mat-card-content>No products available</mat-card-content>
@@ -14,10 +45,8 @@
     <mat-card-content>
       <p>Select Size:</p>
       <div class="size-buttons">
-        <button mat-raised-button 
-                *ngFor="let size of product.sizes" 
-                color="{{ product.selectedSize === size ? 'primary' : '' }}"
-                (click)="selectSize(product, size)">
+        <button mat-raised-button *ngFor="let size of product.sizes"
+          color="{{ product.selectedSize === size ? 'primary' : '' }}" (click)="selectSize(product, size)">
           {{ size }}
         </button>
       </div>
